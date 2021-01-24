@@ -21,9 +21,6 @@ delete Icon.Default.prototype._getIconUrl;
 Icon.Default.mergeOptions({
   iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
   iconUrl: require("leaflet/dist/images/marker-icon.png"),
-  iconUrl_Normal: require("leaflet/dist/images/Normal.png"),
-  iconUrl_Critical: require("leaflet/dist/images/Critical.jpg"),
-  iconUrl_Shutdown: require("leaflet/dist/images/Shutdown.png"),
   shadowUrl: require("leaflet/dist/images/marker-shadow.png")
 });
 

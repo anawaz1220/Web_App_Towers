@@ -1108,7 +1108,7 @@ export default {
 
                 
     sorrywarning(){
-      return alert('Sorry! This Function is not Currently available.')
+      return alert('Sorry! This function is not currently available.')
     },
     editalert(){
       return alert('Please Login First')

@@ -102,113 +102,94 @@ export default {
     }
   },
   actions: {
-    fetchPlots(context, payload) {
-      context.commit("setSelectedPlot", [], { root: true });
-      context.commit("setSnackbar", false, { root: true });
-      context.commit("setLoading", true, { root: true });
-      var baseUrl = `${payload.url}/khasrafilter?`;
-      var params = ``;
-      if (payload.params.block != "" && payload.params.block != undefined) {
-        params += `block=${payload.params.block}&`;
-      }
-      if (payload.params.status != "" && payload.params.status != undefined) {
-        params += `status=${payload.params.status}&`;
-      }
-      if (payload.params.type != "" && payload.params.type != undefined) {
-        params += `type=${payload.params.type}&`;
-      }
-      if (
-        payload.params.dimensions != "" &&
-        payload.params.dimensions != undefined
-      ) {
-        params += `dimensions=${payload.params.dimensions}&`;
-      }
-      Axios.post(baseUrl + params)
-        .then(Response => {
-          context.commit("setPlots", Response.data);
-          context.commit("set3DPlots", Response.data);
-          var polygons = [];
-          Response.data.forEach(polygon => {
-            var geojson = JSON.parse(polygon.st_asgeojson);
-            var ring = geojson.coordinates[0][0];
-            var poly = turf.polygon([ring]);
-            polygons.push(poly);
-          });
-          var centroid = turf.centroid({
-            type: "FeatureCollection",
-            features: polygons
-          });
-          setTimeout(() => {
-            context.commit(
-              "setCenter",
-              [
-                centroid.geometry.coordinates[1],
-                centroid.geometry.coordinates[0]
-              ],
-              { root: true }
-            );
-            context.commit("setZoom", 16, { root: true });
-            context.commit("setLoading", false, { root: true });
-          }, 1000);
-        })
-        .catch(e => {
-          context.commit("setLoading", false, { root: true });
-          context.commit("setSnackbarText", `No Results Found! ${e}`, {
-            root: true
-          });
-          context.commit("setSnackbar", true, { root: true });
-        });
-    },
+    // fetchPlots(context, payload) {
+    //   context.commit("setSelectedPlot", [], { root: true });
+    //   context.commit("setSnackbar", false, { root: true });
+    //   context.commit("setLoading", true, { root: true });
+    //   var baseUrl = `${payload.url}/khasrafilter?`;
+    //   var params = ``;
+    //   if (payload.params.block != "" && payload.params.block != undefined) {
+    //     params += `block=${payload.params.block}&`;
+    //   }
+    //   if (payload.params.status != "" && payload.params.status != undefined) {
+    //     params += `status=${payload.params.status}&`;
+    //   }
+    //   if (payload.params.type != "" && payload.params.type != undefined) {
+    //     params += `type=${payload.params.type}&`;
+    //   }
+    //   if (
+    //     payload.params.dimensions != "" &&
+    //     payload.params.dimensions != undefined
+    //   ) {
+    //     params += `dimensions=${payload.params.dimensions}&`;
+    //   }
+    //   Axios.post(baseUrl + params)
+    //     .then(Response => {
+    //       context.commit("setPlots", Response.data);
+    //       context.commit("set3DPlots", Response.data);
+    //       var polygons = [];
+    //       Response.data.forEach(polygon => {
+    //         var geojson = JSON.parse(polygon.st_asgeojson);
+    //         var ring = geojson.coordinates[0][0];
+    //         var poly = turf.polygon([ring]);
+    //         polygons.push(poly);
+    //       });
+    //       var centroid = turf.centroid({
+    //         type: "FeatureCollection",
+    //         features: polygons
+    //       });
+    //       setTimeout(() => {
+    //         context.commit(
+    //           "setCenter",
+    //           [
+    //             centroid.geometry.coordinates[1],
+    //             centroid.geometry.coordinates[0]
+    //           ],
+    //           { root: true }
+    //         );
+    //         context.commit("setZoom", 16, { root: true });
+    //         context.commit("setLoading", false, { root: true });
+    //       }, 1000);
+    //     })
+    //     .catch(e => {
+    //       context.commit("setLoading", false, { root: true });
+    //       context.commit("setSnackbarText", `No Results Found! ${e}`, {
+    //         root: true
+    //       });
+    //       context.commit("setSnackbar", true, { root: true });
+    //     });
+    // },
 
-    fetchBlockList(context, payload) {
-      Axios.get(`${payload.url}/mozalist`)
-        .then(Response => {
-          context.commit("setBlockList", Response.data.sort());
-        })
-        .catch();
-    },
+    // fetchBlockList(context, payload) {
+    //   Axios.get(`${payload.url}/mozalist`)
+    //     .then(Response => {
+    //       context.commit("setBlockList", Response.data.sort());
+    //     })
+    //     .catch();
+    // },
 
-    fetchDealList(context, payload) {
-      context.commit("setSnackbar", false, { root: true });
-      context.commit("setLoading", true, { root: true });
-      context.commit("setSelectedDeal", [], { root: true });                       /*Test setSelectedPlot*/
-      Axios.get(`${payload.url}/mozawisedealno?moza_name=${payload.block}`) 
-      // console.log(payload.block)                                                   /* ${payload.block}  */
-        .then(Response => {
-          context.commit("setDealList", Response.data.deal_no.sort());                     /*Test Response.data.plots*/
-          setTimeout(() => {
-            context.commit("setLoading", false, { root: true });
-          }, 3000);
-        })
-        .catch(e => {
-          context.commit("setLoading", false, { root: true });
-          context.commit("setSnackbarText", `No Results Found! ${e}`, {
-            root: true
-          });
-          context.commit("setSnackbar", true, { root: true });
-        });
-    },
+    // 
 
-    fetchPlotList(context, payload) {
-      context.commit("setSnackbar", false, { root: true });
-      context.commit("setLoading", true, { root: true });
-      context.commit("setSelectedPlot", [], { root: true });
-      Axios.post(`${payload.url}/searchkhasra?block_name=${payload.block}`)
-        .then(Response => {
-          context.commit("setPlotList", Response.data.plots);
-          // console.log(Response.data.plots)
-          setTimeout(() => {
-            context.commit("setLoading", false, { root: true });
-          }, 3000);
-        })
-        .catch(e => {
-          context.commit("setLoading", false, { root: true });
-          context.commit("setSnackbarText", `No Results Found! ${e}`, {
-            root: true
-          });
-          context.commit("setSnackbar", true, { root: true });
-        });
-    },
+    // fetchPlotList(context, payload) {
+    //   context.commit("setSnackbar", false, { root: true });
+    //   context.commit("setLoading", true, { root: true });
+    //   context.commit("setSelectedPlot", [], { root: true });
+    //   Axios.post(`${payload.url}/searchkhasra?block_name=${payload.block}`)
+    //     .then(Response => {
+    //       context.commit("setPlotList", Response.data.plots);
+    //       // console.log(Response.data.plots)
+    //       setTimeout(() => {
+    //         context.commit("setLoading", false, { root: true });
+    //       }, 3000);
+    //     })
+    //     .catch(e => {
+    //       context.commit("setLoading", false, { root: true });
+    //       context.commit("setSnackbarText", `No Results Found! ${e}`, {
+    //         root: true
+    //       });
+    //       context.commit("setSnackbar", true, { root: true });
+    //     });
+    // },
 
     
 
@@ -329,16 +310,16 @@ export default {
 
 
 
-    fetchSummary(context, payload) {
-      Axios.get(`${payload.url}/khasrasummary`).then(Response => {
-        context.commit("setSummary", Response.data);
-      });
-    },
+    // fetchSummary(context, payload) {
+    //   Axios.get(`${payload.url}/khasrasummary`).then(Response => {
+    //     context.commit("setSummary", Response.data);
+    //   });
+    // },
 
-    fetchStatusList(context, payload) {
-      Axios.get(`${payload.url}/statuslist`).then(Response => {
-        context.commit("setStatusList", Response.data);
-      });
-    }
+    // fetchStatusList(context, payload) {
+    //   Axios.get(`${payload.url}/statuslist`).then(Response => {
+    //     context.commit("setStatusList", Response.data);
+    //   });
+    // }
   }
 };

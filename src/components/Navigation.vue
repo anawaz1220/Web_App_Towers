@@ -107,13 +107,13 @@
 
       <v-card class="legend" @click="clientForm = true" >
             <v-expansion-panel-header >
-             <h4 style="text-align: center;">Clients Detail</h4>
+             <h4 style="text-align: center;">Client's Details</h4>
             </v-expansion-panel-header>
       </v-card>
 
       <v-card class="legend" @click="maintananceForm = true">
             <v-expansion-panel-header >
-             <h4 style="text-align: center;">Maintenance Detail</h4>
+             <h4 style="text-align: center;">Maintenance Details</h4>
             </v-expansion-panel-header>
       </v-card>
 
@@ -125,7 +125,7 @@
 
       <v-card class="legend" @click="equiptmentForm = true">
             <v-expansion-panel-header>
-              <h4 style="text-align: center;">Equiptment Details</h4>
+              <h4 style="text-align: center;">Equipment Details</h4>
             </v-expansion-panel-header>
       </v-card>
 
@@ -441,16 +441,16 @@
                   </tr>
                   <tr>
                     <td> <h4> <img src="Zong.png" width="70px" height="50px"> </h4> </td> 
-                    <td> <v-chip color="yellow">Pending</v-chip> </td>
+                    <td> <v-chip color="yellow">Leaving</v-chip> </td>
                     <td> Jun,2017 </td>
-                    <td> Aug,2025</td>
+                    <td> Aug,2021</td>
                     <td> 1.3 Million</td>
                   </tr>
                   <tr>
                     <td> <h4> <img src="Telenor.jpg" width="70px" height="50px"> </h4> </td> 
-                    <td> <v-chip color="red">Leaved</v-chip> </td>
-                    <td> May,2019 </td>
-                    <td> Nov,2023</td>
+                    <td> <v-chip color="red">Left</v-chip> </td>
+                    <td> May,2014 </td>
+                    <td> Nov,2020</td>
                     <td> 1.5 Million</td>
                   </tr>
                   
@@ -495,7 +495,7 @@
                   <v-simple-table class="tableItem">
                 <tbody>
                   <tr>
-                    <th><h2>Equiptment</h2></th>
+                    <th><h2>Equipment</h2></th>
                     <th><h2>Next Check</h2></th>
                     <th><h2>Last Checked</h2></th>
                     <th><h2>Technician</h2></th>
@@ -549,7 +549,7 @@
     >
       <v-card>
         <v-container grid-list-xs>
-          <h3 style="text-align:center;">Finance Details (Income and Expenses on Rupees/Year)</h3>
+          <h3 style="text-align:center;">Finance Details of Income and Expenses (Rupees/Year)</h3>
           <v-btn
                 tile
                 color="success"
@@ -653,7 +653,7 @@
     </v-dialog>
 
 
-  <!-- Equiptment Form -->
+  <!-- Equipment Form -->
 
   <v-dialog
       v-model="equiptmentForm"
@@ -664,7 +664,7 @@
     >
       <v-card>
         <v-container grid-list-xs>
-          <h3 style="text-align:center;">Equiptment Details</h3>
+          <h3 style="text-align:center;">Equipment Details</h3>
           <v-btn
                 tile
                 color="success"

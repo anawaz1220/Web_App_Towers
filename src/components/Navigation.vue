@@ -63,10 +63,63 @@
         >3D Map -->
       <!-- </v-btn> -->
 
+
+
     <v-btn  class="ma-2" depressed color="success" @click="editalert"><v-icon left> mdi-pencil</v-icon> Edit </v-btn>
 
-    <v-btn depressed color="primary" @click="loginForm= true">Login</v-btn>
 
+
+  <!-- Login Form and button -->
+    <v-dialog
+      v-model="loginForm"
+      max-width="500px"
+      max-height="200px"
+      transition="dialog-transition"
+    >
+    <template  v-slot:activator="{ on, attrs }">
+      <v-btn v-bind="attrs" v-on="on" depressed color="primary" >Login</v-btn>
+    </template>
+    <template >
+      <v-card>
+        <v-container grid-list-xs>
+          <v-btn depressed color="primary" @click="sorrywarning">Register</v-btn>
+          <h3 style="text-align:center;">Member Login</h3>
+          <v-divider class="my-2"></v-divider>
+          
+          <v-flex>
+            <v-container>
+                <v-layout row class="text-xs-center">
+                  
+                  <v-flex xs class="grey lighten-4">
+                    <v-container style="position: relative;top: 13%;" class="text-xs-center">
+                      <v-card flat>
+                        <v-card-title primary-title>
+                          <h4>Login</h4>
+                        </v-card-title>
+                        <v-form>
+                        <v-text-field style="text-align:center;" name="Username" label="Username"></v-text-field>
+                        <v-text-field  name="Password" label="Password" type="password"></v-text-field>
+                        <v-card-actions>
+                          <v-btn primary large block @click="sorrywarning">Login</v-btn>
+                        </v-card-actions>
+                        </v-form>
+                      </v-card>
+                    </v-container>
+                  </v-flex>
+                </v-layout>
+           </v-container>        
+          </v-flex>
+
+        </v-container>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="error" text class="px-2" @click="loginForm = false"
+            >Cancel</v-btn>
+        </v-card-actions>
+      </v-card>
+      </template>
+    </v-dialog> 
+    
     <v-btn icon color="primary" @click="resetSelect"> <v-icon>mdi-refresh</v-icon> </v-btn>
 
     <v-app-bar-nav-icon color="primary" @click="toggleRightDrawer" ></v-app-bar-nav-icon>
@@ -104,39 +157,440 @@
           </v-chip-group>
         
 
+      
+    <!-- Client Form -->
 
-      <v-card class="legend" @click="clientForm = true" >
-            <v-expansion-panel-header >
-             <h4 style="text-align: center;">Client's Details</h4>
-            </v-expansion-panel-header>
+    <v-dialog
+      v-model="clientForm"
+      max-width="800px"
+      max-height="500px"
+      transition="dialog-transition"
+    >
+    <template  v-slot:activator="{ on, attrs }">
+      <v-card class="legend" v-bind="attrs" v-on="on" >
+              <v-expansion-panel-header >
+              <h4 style="text-align: center;">Client's Details</h4>
+              </v-expansion-panel-header>
+        </v-card>
+    </template>
+    <template>
+      <v-card>
+        <v-container grid-list-xs>
+          <h3 style="text-align:center;">Client's Details</h3>
+          <v-btn
+                tile
+                color="success"
+                @click="editalert"
+              >
+                    <v-icon left>
+                      mdi-pencil
+                    </v-icon>
+                Edit
+          </v-btn>
+          <v-divider class="my-2"></v-divider>
+          
+             <v-flex>
+                  <v-simple-table class="tableItem">
+                <tbody>
+                  <tr>
+                    <th><h2>Client</h2></th>
+                    <th><h2>Status</h2></th>
+                    <th><h2>Started</h2></th>
+                    <th><h2>Ends</h2></th>
+                    <th><h2>Rates/Year</h2></th>
+                  </tr>
+                  <tr>
+                    <td> <h4> <img src="Jazz.jpg" width="70px" height="50px"> </h4> </td> 
+                    <td> <v-chip color="green">Working</v-chip> </td>
+                    <td> Feb,2018 </td>
+                    <td> Jun,2022</td>
+                    <td> 0.9 Million</td>
+                  </tr>
+                  <tr>
+                    <td> <h4> <img src="Zong.png" width="70px" height="50px"> </h4> </td> 
+                    <td> <v-chip color="yellow">Leaving</v-chip> </td>
+                    <td> Jun,2017 </td>
+                    <td> Aug,2021</td>
+                    <td> 1.3 Million</td>
+                  </tr>
+                  <tr>
+                    <td> <h4> <img src="Telenor.jpg" width="70px" height="50px"> </h4> </td> 
+                    <td> <v-chip color="red">Left</v-chip> </td>
+                    <td> May,2014 </td>
+                    <td> Nov,2020</td>
+                    <td> 1.5 Million</td>
+                  </tr>
+                  
+                </tbody>
+          </v-simple-table>
+                </v-flex>
+        </v-container>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="error" text class="px-2" @click="clientForm = false"
+            >Cancel</v-btn>
+        </v-card-actions>
       </v-card>
+      </template>
+    </v-dialog>
 
-      <v-card class="legend" @click="maintananceForm = true">
+
+    <!-- Maintanance From -->
+
+
+     <v-dialog
+      v-model="maintananceForm"
+      
+      max-width="800px"
+      max-height="500px"
+      transition="dialog-transition"
+    >
+    <template v-slot:activator="{ on, attrs }" >
+      <v-card class="legend" v-bind="attrs" v-on="on" >
             <v-expansion-panel-header >
              <h4 style="text-align: center;">Maintenance Details</h4>
             </v-expansion-panel-header>
       </v-card>
+      </template> 
+    <template>   
+      <v-card>
+        <v-container grid-list-xs>
+          <h3 style="text-align:center;">Maintanance Details</h3>
+          <v-btn
+                tile
+                color="success"
+                @click="editalert"
+              >
+                    <v-icon left>
+                      mdi-pencil
+                    </v-icon>
+                Edit
+          </v-btn>
+          <v-divider class="my-2"></v-divider>
+          
+            <v-flex>
+                  <v-simple-table class="tableItem">
+                <tbody>
+                  <tr>
+                    <th><h2>Equipment</h2></th>
+                    <th><h2>Next Check</h2></th>
+                    <th><h2>Last Checked</h2></th>
+                    <th><h2>Technician</h2></th>
+                    <th><h2>Contact #</h2></th>
+                    <th><h2>Remarks</h2></th>
+                  </tr>
+                  <tr>
+                    <td> Generator </td> 
+                    <td> 10th Feb </td>
+                    <td> 10th Jan </td>
+                    <td> M. Munawar </td>
+                    <td> 0123123456 </td>
+                    <td> Satisfied </td>
+                  </tr>
+                  <tr>
+                    <td> Batteries </td> 
+                    <td> 10th Feb </td>
+                    <td> 10th Jan </td>
+                    <td> Zeeshan Ali </td>
+                    <td> 0123123456 </td>
+                    <td> Cells Issue </td>
+                  </tr>
+                  <tr>
+                    <td> Air Conditioner </td> 
+                    <td> 10th Feb </td>
+                    <td> 10th Jan </td>
+                    <td> Arsalan Ahmad </td>
+                    <td> 0123123456 </td>
+                    <td> Good </td>
+                  </tr>
+                </tbody>
+                </v-simple-table>
+                </v-flex>
+        </v-container>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="error" text class="px-2" @click="maintananceForm = false"
+            >Cancel</v-btn>
+        </v-card-actions>
+      </v-card>
+    </template>
+    </v-dialog>   
 
-      <v-card class="legend" @click="populationForm = true">
-            <v-expansion-panel-header>
+    <!-- Finance Form -->
+
+    <v-dialog
+      v-model="financeForm"
+      max-width="800px"
+      max-height="500px"
+      transition="dialog-transition"
+    >
+    <template v-slot:activator="{ on, attrs }" >
+      <v-card class="legend" v-bind="attrs" v-on="on" >
+            <v-expansion-panel-header >
              <h4 style="text-align: center;">Finance Details</h4>
             </v-expansion-panel-header>
       </v-card>
+      </template> 
+    <template>
+      <v-card>
+        <v-container grid-list-xs>
+          <h3 style="text-align:center;">Finance Details of Income and Expenses (Rupees/Year)</h3>
+          <v-btn
+                tile
+                color="success"
+                @click="editalert"
+              >
+                    <v-icon left>
+                      mdi-pencil
+                    </v-icon>
+                Edit
+          </v-btn>
+          <v-divider class="my-2"></v-divider>
+          
+             <v-flex>
+                  <v-simple-table class="tableItem">
+                <tbody>
+                  <tr> <td colspan="6" style="text-align:center; ">
+                    <v-chip 
+                    style="width: 220px; text-align:center; height: 40px;" 
+                    color="#eb4634"
+                    text-color="white"
+                    ><h3 style="text-align:center;">Total Expenses: 2.6 Million</h3></v-chip></td> </tr>
 
-      <v-card class="legend" @click="equiptmentForm = true">
-            <v-expansion-panel-header>
-              <h4 style="text-align: center;">Equipment Details</h4>
-            </v-expansion-panel-header>
-      </v-card>
+                  <tr style="text-align:center; ">
+                    <th><h2>Budget Year</h2></th>
+                    <th><h2>Lease Cost</h2></th>
+                    
+                    <th><h2>Maintanance Cost</h2></th>
+                    <th><h2>Security Cost</h2></th>
+                    <th><v-chip color="#eb4634"><h2>Total Cost</h2></v-chip></th>
+                    
+                  </tr>
+                  <tr style="text-align:center; ">
+                    <td> 2018-2019  </td>
+                    <td> 650,000  </td> 
+                    <td> 120,000 </td>
+                    <td> 100,000 </td>
+                    <td> 910,000 </td>
+                  </tr>
+                  <tr style="text-align:center; ">
+                    <td> 2019-2020  </td>
+                    <td> 710,000  </td> 
+                    <td> 130,000 </td>
+                    <td> 140,000 </td>
+                    <td> 980,000 </td>
+                    
+                  </tr>
+                  <tr style="text-align:center; ">
+                    <td> 2020-2021  </td>
+                    <td> 520,000  </td> 
+                    <td> 90,000 </td>
+                    <td> 110,000 </td>
+                    <td> 720,000 </td>
+                  </tr>
 
-      <v-card class="legend" @click="propertyForm = true">
-            <v-expansion-panel-header>
-              <h4 style="text-align: center;">Property Details</h4>
-            </v-expansion-panel-header>
+                  <tr> <td colspan="6" style="text-align:center; ">
+                    <v-chip 
+                    style="width: 220px; text-align:center; height: 40px;" 
+                    color="#239c0b"
+                    text-color="white"
+                    ><h3 style="text-align:center;">Total Income: 1.04 Million</h3></v-chip></td> </tr>
+
+                  <tr style="text-align:center; ">
+                    <th><h2>Budget Year</h2></th>
+                    <th><h2>From Jazz</h2></th>
+                    <th><h2>From Zong</h2></th>
+                    <th><h2>From Ufone</h2></th>
+                    <th><v-chip color="#239c0b"><h2>Income</h2></v-chip></th>
+                    
+                  </tr>
+                  <tr style="text-align:center; ">
+                    <td> 2018-2019  </td>
+                    <td> 100,000  </td> 
+                    <td> 90,000 </td>
+                    <td> 110,000 </td>
+                    <td> 300,000 </td>
+                  </tr>
+                  <tr style="text-align:center; ">
+                    <td> 2019-2020  </td>
+                    <td> 150,000  </td> 
+                    <td> 160,000 </td>
+                    <td> 170,000 </td>
+                    <td> 480,000 </td>
+                  </tr>
+                  <tr style="text-align:center; ">
+                    <td> 2020-2021  </td>
+                    <td> 70,000  </td> 
+                    <td> 100,000 </td>
+                    <td> 90,000 </td>
+                    <td> 260,000 </td>
+                  </tr>
+                </tbody>
+                </v-simple-table>
+                </v-flex>
+        </v-container>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="error" text class="px-2" @click="financeForm = false"
+            >Cancel</v-btn>
+        </v-card-actions>
       </v-card>
+      </template>
+    </v-dialog>  
+
     
+    <!-- Equipment Form -->
+
+  <v-dialog
+      v-model="equiptmentForm"
+      max-width="800px"
+      max-height="500px"
+      transition="dialog-transition"
+    >
+    <template v-slot:activator="{ on, attrs }" >
+      <v-card class="legend" v-bind="attrs" v-on="on" >
+            <v-expansion-panel-header >
+             <h4 style="text-align: center;">Equipment Details</h4>
+            </v-expansion-panel-header>
+      </v-card>
+      </template>
+    <template>
+      <v-card>
+        <v-container grid-list-xs>
+          <h3 style="text-align:center;">Equipment Details</h3>
+          <v-btn
+                tile
+                color="success"
+                @click="editalert"
+              >
+                    <v-icon left>
+                      mdi-pencil
+                    </v-icon>
+                Edit
+          </v-btn>
+          <v-divider class="my-2"></v-divider>
+          
+            <v-flex>
+                  <v-simple-table class="tableItem">
+                <tbody>
+                  <tr>
+                    <th><h2>Name</h2></th>
+                    <th><h2>Model</h2></th>
+                    <th><h2>Purchased</h2></th>
+                    <th><h2>Price</h2></th>
+                    <th><h2>Capacity</h2></th>
+                    <th><h2>Remarks</h2></th>
+                  </tr>
+                  <tr>
+                    <td> Generator </td> 
+                    <td> Jasco CST </td>
+                    <td> Feb, 2016 </td>
+                    <td> 4.4 Million </td>
+                    <td> 275 kVa </td>
+                    <td> Normal </td>
+                  </tr>
+                  <tr>
+                    <td> Batteries </td> 
+                    <td> Lithium Ion </td>
+                    <td> Jan 2012 </td>
+                    <td> 1.4 Million </td>
+                    <td> 48V </td>
+                    <td> Critical </td>
+                  </tr>
+                  <tr>
+                    <td> Air Conditioner </td> 
+                    <td> Samsung </td>
+                    <td> Aug 2017 </td>
+                    <td> 70,000 </td>
+                    <td> 1 Ton </td>
+                    <td> Good </td>
+                  </tr>
+                  <tr>
+                    <td> Solar Panel </td> 
+                    <td> Tesla </td>
+                    <td> May 2014 </td>
+                    <td> 25,000 </td>
+                    <td> 1 KW </td>
+                    <td> Satisfied </td>
+                  </tr>
+                </tbody>
+                </v-simple-table>
+                </v-flex>
+        </v-container>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="error" text class="px-2" @click="equiptmentForm = false"
+            >Cancel</v-btn>
+        </v-card-actions>
+      </v-card>
+      </template>
+    </v-dialog> 
+
+  <!-- Property Form -->
+
+  <v-dialog
+      v-model="propertyForm"
       
-      </v-layout>
+      max-width="800px"
+      max-height="500px"
+      transition="dialog-transition"
+    >
+    <template v-slot:activator="{ on, attrs }" >
+      <v-card class="legend" v-bind="attrs" v-on="on" >
+            <v-expansion-panel-header >
+             <h4 style="text-align: center;">Property Details</h4>
+            </v-expansion-panel-header>
+      </v-card>
+      </template>
+    <template>
+      <v-card>
+        <v-container grid-list-xs>
+          <h3 style="text-align:center;">Property Details</h3>
+          <v-btn
+                tile
+                color="success"
+                @click="editalert"
+              >
+                    <v-icon left>
+                      mdi-pencil
+                    </v-icon>
+                Edit
+          </v-btn>
+          <v-divider class="my-2"></v-divider>
+          
+          <v-flex>
+                  <v-simple-table class="tableItem">
+                <tbody>
+                  <tr>
+                    <th><h2>Land Status</h2></th>
+                    <th><h2>Owner Name</h2></th>
+                    <th><h2>Leased Period</h2></th>
+                    <th><h2>Rates/year</h2></th>
+                    <th><h2>Contact#</h2></th>
+                  </tr>
+                  <tr>
+                    <td> Leased </td> 
+                    <td> Mujtba Qurashi </td>
+                    <td> 10 Years </td>
+                    <td> 0.7 Million </td>
+                    <td> 051-4234235 </td>
+                  </tr>
+                  </tbody>
+                </v-simple-table>
+                </v-flex>
+
+        </v-container>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="error" text class="px-2" @click="propertyForm = false"
+            >Cancel</v-btn>
+        </v-card-actions>
+      </v-card>
+      </template>
+    </v-dialog> 
+
+      
+  </v-layout>
 
 
       <!-- <div class="pa-1"> -->
@@ -396,449 +850,6 @@
       </div>
     </v-navigation-drawer>
 
-
-    <!-- Client Form -->
-
-    <v-dialog
-      v-model="clientForm"
-      
-      max-width="800px"
-      max-height="500px"
-      transition="dialog-transition"
-    >
-      <v-card>
- 
-        <v-container grid-list-xs>
-          <h3 style="text-align:center;">Client's Details</h3>
-          <v-btn
-                tile
-                color="success"
-                @click="editalert"
-              >
-                    <v-icon left>
-                      mdi-pencil
-                    </v-icon>
-                Edit
-          </v-btn>
-          <v-divider class="my-2"></v-divider>
-          
-             <v-flex>
-                  <v-simple-table class="tableItem">
-                <tbody>
-                  <tr>
-                    <th><h2>Client</h2></th>
-                    <th><h2>Status</h2></th>
-                    <th><h2>Started</h2></th>
-                    <th><h2>Ends</h2></th>
-                    <th><h2>Rates/Year</h2></th>
-                  </tr>
-                  <tr>
-                    <td> <h4> <img src="Jazz.jpg" width="70px" height="50px"> </h4> </td> 
-                    <td> <v-chip color="green">Working</v-chip> </td>
-                    <td> Feb,2018 </td>
-                    <td> Jun,2022</td>
-                    <td> 0.9 Million</td>
-                  </tr>
-                  <tr>
-                    <td> <h4> <img src="Zong.png" width="70px" height="50px"> </h4> </td> 
-                    <td> <v-chip color="yellow">Leaving</v-chip> </td>
-                    <td> Jun,2017 </td>
-                    <td> Aug,2021</td>
-                    <td> 1.3 Million</td>
-                  </tr>
-                  <tr>
-                    <td> <h4> <img src="Telenor.jpg" width="70px" height="50px"> </h4> </td> 
-                    <td> <v-chip color="red">Left</v-chip> </td>
-                    <td> May,2014 </td>
-                    <td> Nov,2020</td>
-                    <td> 1.5 Million</td>
-                  </tr>
-                  
-                </tbody>
-          </v-simple-table>
-                </v-flex>
-        </v-container>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="error" text class="px-2" @click="clientForm = false"
-            >Cancel</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-
-    <!-- Maintanance From -->
-
-
-     <v-dialog
-      v-model="maintananceForm"
-      
-      max-width="800px"
-      max-height="500px"
-      transition="dialog-transition"
-    >
-      <v-card>
-        <v-container grid-list-xs>
-          <h3 style="text-align:center;">Maintanance Details</h3>
-          <v-btn
-                tile
-                color="success"
-                @click="editalert"
-              >
-                    <v-icon left>
-                      mdi-pencil
-                    </v-icon>
-                Edit
-          </v-btn>
-          <v-divider class="my-2"></v-divider>
-          
-            <v-flex>
-                  <v-simple-table class="tableItem">
-                <tbody>
-                  <tr>
-                    <th><h2>Equipment</h2></th>
-                    <th><h2>Next Check</h2></th>
-                    <th><h2>Last Checked</h2></th>
-                    <th><h2>Technician</h2></th>
-                    <th><h2>Contact #</h2></th>
-                    <th><h2>Remarks</h2></th>
-                  </tr>
-                  <tr>
-                    <td> Generator </td> 
-                    <td> 10th Feb </td>
-                    <td> 10th Jan </td>
-                    <td> M. Munawar </td>
-                    <td> 0123123456 </td>
-                    <td> Satisfied </td>
-                  </tr>
-                  <tr>
-                    <td> Batteries </td> 
-                    <td> 10th Feb </td>
-                    <td> 10th Jan </td>
-                    <td> Zeeshan Ali </td>
-                    <td> 0123123456 </td>
-                    <td> Cells Issue </td>
-                  </tr>
-                  <tr>
-                    <td> Air Conditioner </td> 
-                    <td> 10th Feb </td>
-                    <td> 10th Jan </td>
-                    <td> Arsalan Ahmad </td>
-                    <td> 0123123456 </td>
-                    <td> Good </td>
-                  </tr>
-                </tbody>
-                </v-simple-table>
-                </v-flex>
-        </v-container>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="error" text class="px-2" @click="maintananceForm = false"
-            >Cancel</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog> 
-
-    <!-- Finance Form -->
-
-    <v-dialog
-      v-model="populationForm"
-      
-      max-width="800px"
-      max-height="500px"
-      transition="dialog-transition"
-    >
-      <v-card>
-        <v-container grid-list-xs>
-          <h3 style="text-align:center;">Finance Details of Income and Expenses (Rupees/Year)</h3>
-          <v-btn
-                tile
-                color="success"
-                @click="editalert"
-              >
-                    <v-icon left>
-                      mdi-pencil
-                    </v-icon>
-                Edit
-          </v-btn>
-          <v-divider class="my-2"></v-divider>
-          
-             <v-flex>
-                  <v-simple-table class="tableItem">
-                <tbody>
-                  <tr> <td colspan="6" style="text-align:center; ">
-                    <v-chip 
-                    style="width: 220px; text-align:center; height: 40px;" 
-                    color="#eb4634"
-                    text-color="white"
-                    ><h3 style="text-align:center;">Total Expenses: 2.6 Million</h3></v-chip></td> </tr>
-
-                  <tr style="text-align:center; ">
-                    <th><h2>Budget Year</h2></th>
-                    <th><h2>Lease Cost</h2></th>
-                    
-                    <th><h2>Maintanance Cost</h2></th>
-                    <th><h2>Security Cost</h2></th>
-                    <th><v-chip color="#eb4634"><h2>Total Cost</h2></v-chip></th>
-                    
-                  </tr>
-                  <tr style="text-align:center; ">
-                    <td> 2018-2019  </td>
-                    <td> 650,000  </td> 
-                    <td> 120,000 </td>
-                    <td> 100,000 </td>
-                    <td> 910,000 </td>
-                  </tr>
-                  <tr style="text-align:center; ">
-                    <td> 2019-2020  </td>
-                    <td> 710,000  </td> 
-                    <td> 130,000 </td>
-                    <td> 140,000 </td>
-                    <td> 980,000 </td>
-                    
-                  </tr>
-                  <tr style="text-align:center; ">
-                    <td> 2020-2021  </td>
-                    <td> 520,000  </td> 
-                    <td> 90,000 </td>
-                    <td> 110,000 </td>
-                    <td> 720,000 </td>
-                  </tr>
-
-                  <tr> <td colspan="6" style="text-align:center; ">
-                    <v-chip 
-                    style="width: 220px; text-align:center; height: 40px;" 
-                    color="#239c0b"
-                    text-color="white"
-                    ><h3 style="text-align:center;">Total Income: 1.04 Million</h3></v-chip></td> </tr>
-
-                  <tr style="text-align:center; ">
-                    <th><h2>Budget Year</h2></th>
-                    <th><h2>From Jazz</h2></th>
-                    <th><h2>From Zong</h2></th>
-                    <th><h2>From Ufone</h2></th>
-                    <th><v-chip color="#239c0b"><h2>Income</h2></v-chip></th>
-                    
-                  </tr>
-                  <tr style="text-align:center; ">
-                    <td> 2018-2019  </td>
-                    <td> 100,000  </td> 
-                    <td> 90,000 </td>
-                    <td> 110,000 </td>
-                    <td> 300,000 </td>
-                  </tr>
-                  <tr style="text-align:center; ">
-                    <td> 2019-2020  </td>
-                    <td> 150,000  </td> 
-                    <td> 160,000 </td>
-                    <td> 170,000 </td>
-                    <td> 480,000 </td>
-                  </tr>
-                  <tr style="text-align:center; ">
-                    <td> 2020-2021  </td>
-                    <td> 70,000  </td> 
-                    <td> 100,000 </td>
-                    <td> 90,000 </td>
-                    <td> 260,000 </td>
-                  </tr>
-                </tbody>
-                </v-simple-table>
-                </v-flex>
-        </v-container>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="error" text class="px-2" @click="populationForm = false"
-            >Cancel</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-
-
-  <!-- Equipment Form -->
-
-  <v-dialog
-      v-model="equiptmentForm"
-      
-      max-width="800px"
-      max-height="500px"
-      transition="dialog-transition"
-    >
-      <v-card>
-        <v-container grid-list-xs>
-          <h3 style="text-align:center;">Equipment Details</h3>
-          <v-btn
-                tile
-                color="success"
-                @click="editalert"
-              >
-                    <v-icon left>
-                      mdi-pencil
-                    </v-icon>
-                Edit
-          </v-btn>
-          <v-divider class="my-2"></v-divider>
-          
-            <v-flex>
-                  <v-simple-table class="tableItem">
-                <tbody>
-                  <tr>
-                    <th><h2>Name</h2></th>
-                    <th><h2>Model</h2></th>
-                    <th><h2>Purchased</h2></th>
-                    <th><h2>Price</h2></th>
-                    <th><h2>Capacity</h2></th>
-                    <th><h2>Remarks</h2></th>
-                  </tr>
-                  <tr>
-                    <td> Generator </td> 
-                    <td> Jasco CST </td>
-                    <td> Feb, 2016 </td>
-                    <td> 4.4 Million </td>
-                    <td> 275 kVa </td>
-                    <td> Normal </td>
-                  </tr>
-                  <tr>
-                    <td> Batteries </td> 
-                    <td> Lithium Ion </td>
-                    <td> Jan 2012 </td>
-                    <td> 1.4 Million </td>
-                    <td> 48V </td>
-                    <td> Critical </td>
-                  </tr>
-                  <tr>
-                    <td> Air Conditioner </td> 
-                    <td> Samsung </td>
-                    <td> Aug 2017 </td>
-                    <td> 70,000 </td>
-                    <td> 1 Ton </td>
-                    <td> Good </td>
-                  </tr>
-                  <tr>
-                    <td> Solar Panel </td> 
-                    <td> Tesla </td>
-                    <td> May 2014 </td>
-                    <td> 25,000 </td>
-                    <td> 1 KW </td>
-                    <td> Satisfied </td>
-                  </tr>
-                </tbody>
-                </v-simple-table>
-                </v-flex>
-        </v-container>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="error" text class="px-2" @click="equiptmentForm = false"
-            >Cancel</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog> 
-
- 
-
-  <!-- Property Form -->
-
-  <v-dialog
-      v-model="propertyForm"
-      
-      max-width="800px"
-      max-height="500px"
-      transition="dialog-transition"
-    >
-      <v-card>
-        <v-container grid-list-xs>
-          <h3 style="text-align:center;">Property Details</h3>
-          <v-btn
-                tile
-                color="success"
-                @click="editalert"
-              >
-                    <v-icon left>
-                      mdi-pencil
-                    </v-icon>
-                Edit
-          </v-btn>
-          <v-divider class="my-2"></v-divider>
-          
-          <v-flex>
-                  <v-simple-table class="tableItem">
-                <tbody>
-                  <tr>
-                    <th><h2>Land Status</h2></th>
-                    <th><h2>Owner Name</h2></th>
-                    <th><h2>Leased Period</h2></th>
-                    <th><h2>Rates/year</h2></th>
-                    <th><h2>Contact#</h2></th>
-                  </tr>
-                  <tr>
-                    <td> Leased </td> 
-                    <td> Mujtba Qurashi </td>
-                    <td> 10 Years </td>
-                    <td> 0.7 Million </td>
-                    <td> 051-4234235 </td>
-                  </tr>
-                  </tbody>
-                </v-simple-table>
-                </v-flex>
-
-        </v-container>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="error" text class="px-2" @click="propertyForm = false"
-            >Cancel</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog> 
-
-  <!-- Login Page -->
-
-  <v-dialog
-      v-model="loginForm"
-      
-      max-width="500px"
-      max-height="200px"
-      transition="dialog-transition"
-    >
-      <v-card>
-        <v-container grid-list-xs>
-          <v-btn depressed color="primary" @click="sorrywarning">Register</v-btn>
-          <h3 style="text-align:center;">Member Login</h3>
-          <v-divider class="my-2"></v-divider>
-          
-          <v-flex>
-            <v-container>
-                <v-layout row class="text-xs-center">
-                  
-                  <v-flex xs class="grey lighten-4">
-                    <v-container style="position: relative;top: 13%;" class="text-xs-center">
-                      <v-card flat>
-                        <v-card-title primary-title>
-                          <h4>Login</h4>
-                        </v-card-title>
-                        <v-form>
-                        <v-text-field style="text-align:center;" name="Username" label="Username"></v-text-field>
-                        <v-text-field  name="Password" label="Password" type="password"></v-text-field>
-                        <v-card-actions>
-                          <v-btn primary large block @click="sorrywarning">Login</v-btn>
-                        </v-card-actions>
-                        </v-form>
-                      </v-card>
-                    </v-container>
-                  </v-flex>
-                </v-layout>
-           </v-container>        
-          </v-flex>
-
-        </v-container>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="error" text class="px-2" @click="loginForm = false"
-            >Cancel</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog> 
-   
-   
-
-
   </nav>
 </template>
 
@@ -859,7 +870,9 @@ export default {
 
   
   data() {
-    return {
+    return {      
+      dialog: false,
+      financeForm: false,
       loginForm: false,
       equiptmentForm: false,
       propertyForm: false,

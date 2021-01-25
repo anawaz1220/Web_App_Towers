@@ -36,7 +36,7 @@
 
         <!-- Society Name -->
 
-        <snap style= "font-size: 22px; color:#098217; margin-left: 350px; vertical-align:50%;"> Digital Dashboard for Tower Business </snap>
+        <snap style= "font-size: 22px; color:#098217; margin-left: 300px; vertical-align:50%;"> Digital Dashboard for Tower Business </snap>
       </v-toolbar-title>
 
 

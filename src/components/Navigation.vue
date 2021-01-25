@@ -298,7 +298,7 @@
               dense
               outlined
           ></v-autocomplete>
-            <v-autocomplete
+            <v-autocomplete class="my-2"
               :items="regions"
               v-model="region_id"
               label="Region ID"
@@ -685,7 +685,7 @@
                     <th><h2>Model</h2></th>
                     <th><h2>Purchased</h2></th>
                     <th><h2>Price</h2></th>
-                    <th><h2>Capicity</h2></th>
+                    <th><h2>Capacity</h2></th>
                     <th><h2>Remarks</h2></th>
                   </tr>
                   <tr>

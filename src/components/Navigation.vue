@@ -36,7 +36,7 @@
 
         <!-- Society Name -->
 
-        <snap style= "font-size: 22px; color:#098217; margin-left: 350px; vertical-align:50%;"> Tower Management System </snap>
+        <snap style= "font-size: 22px; color:#098217; margin-left: 350px; vertical-align:50%;"> Digital Dashboard for Tower Business </snap>
       </v-toolbar-title>
 
 
@@ -66,7 +66,7 @@
     <v-btn  class="ma-2" depressed color="success" @click="editalert"><v-icon left> mdi-pencil</v-icon> Edit </v-btn>
 
     <v-btn depressed color="primary" @click="loginForm= true">Login</v-btn>
-  
+
     <v-btn icon color="primary" @click="resetSelect"> <v-icon>mdi-refresh</v-icon> </v-btn>
 
     <v-app-bar-nav-icon color="primary" @click="toggleRightDrawer" ></v-app-bar-nav-icon>
@@ -401,7 +401,7 @@
 
     <v-dialog
       v-model="clientForm"
-      persistent
+      
       max-width="800px"
       max-height="500px"
       transition="dialog-transition"
@@ -471,7 +471,7 @@
 
      <v-dialog
       v-model="maintananceForm"
-      persistent
+      
       max-width="800px"
       max-height="500px"
       transition="dialog-transition"
@@ -542,7 +542,7 @@
 
     <v-dialog
       v-model="populationForm"
-      persistent
+      
       max-width="800px"
       max-height="500px"
       transition="dialog-transition"
@@ -657,7 +657,7 @@
 
   <v-dialog
       v-model="equiptmentForm"
-      persistent
+      
       max-width="800px"
       max-height="500px"
       transition="dialog-transition"
@@ -738,7 +738,7 @@
 
   <v-dialog
       v-model="propertyForm"
-      persistent
+      
       max-width="800px"
       max-height="500px"
       transition="dialog-transition"
@@ -792,13 +792,14 @@
 
   <v-dialog
       v-model="loginForm"
-      persistent
+      
       max-width="500px"
       max-height="200px"
       transition="dialog-transition"
     >
       <v-card>
         <v-container grid-list-xs>
+          <v-btn depressed color="primary" @click="sorrywarning">Register</v-btn>
           <h3 style="text-align:center;">Member Login</h3>
           <v-divider class="my-2"></v-divider>
           

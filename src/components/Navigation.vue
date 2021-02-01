@@ -22,7 +22,6 @@
         :disabled="map.show3D"
       ></v-app-bar-nav-icon>
 
-      <!-- Society Logo -->
 
       <v-toolbar-title class="hidden-md-and-down">
          <img
@@ -34,7 +33,6 @@
           />
 
 
-        <!-- Society Name -->
 
         <snap style= "font-size: 22px; color:#098217; margin-left: 300px; vertical-align:50%;"> Digital Dashboard for Tower Business </snap>
       </v-toolbar-title>
@@ -42,34 +40,15 @@
 
 
       <v-spacer></v-spacer>
-      <!-- {{plotID}} -->
+     
       <v-spacer></v-spacer>
       
-      <!-- <v-btn
-        :disabled="get3DPlots.length == 0"
-        :color="map.show3D ? 'red' : 'green'"
-        :text="!map.show3D"
-        class="ma-2 white--text"
-        @click="toggle3DMap" -->
-      <!-- > -->
-        <!-- <v-icon dark left v-if="!map.show3D">
-          {{
-            get3DPlots.length == 0
-              ? `mdi-cube-outline mdi-spin`
-              : map.show3D
-              ? "mdi-close"
-              : "mdi-cube-outline"
-          }}</v-icon
-        >3D Map -->
-      <!-- </v-btn> -->
-
+      
 
 
     <v-btn  class="ma-2" depressed color="success" @click="editalert"><v-icon left> mdi-pencil</v-icon> Edit </v-btn>
 
 
-
-  <!-- Login Form and button -->
     <v-dialog
       v-model="loginForm"
       max-width="500px"
@@ -127,7 +106,6 @@
     </v-app-bar>
 
 
-    <!-- Drawers -->
     
     <v-navigation-drawer 
     app 
@@ -139,7 +117,7 @@
       <v-layout row wrap class="ma-0 pa-2">
 
         <h3 class="ma-0 py-3 px-8" style= "font-size: 22px; color:#098217; margin-right: 500px; vertical-align:50%;"
-        >Tower Summary</h3>
+        >Towers Summary</h3>
         
           <v-avatar tile height="200px" width="240px" class="ma-1 pa-8">
             <img
@@ -153,12 +131,10 @@
           <v-chip-group class="ma-1 pa-2"> 
             <v-chip color="#93d14b"> Site ID: 1213 </v-chip>
             <v-chip color="#93d14b">Type: LTE</v-chip>
-            <!-- <v-chip color="#4bd1d1">Status: Working</v-chip> -->
           </v-chip-group>
         
 
       
-    <!-- Client Form -->
 
     <v-dialog
       v-model="clientForm"
@@ -235,7 +211,6 @@
     </v-dialog>
 
 
-    <!-- Maintanance From -->
 
 
      <v-dialog
@@ -316,7 +291,6 @@
     </template>
     </v-dialog>   
 
-    <!-- Finance Form -->
 
     <v-dialog
       v-model="financeForm"
@@ -439,7 +413,6 @@
     </v-dialog>  
 
     
-    <!-- Equipment Form -->
 
   <v-dialog
       v-model="equiptmentForm"
@@ -526,7 +499,6 @@
       </template>
     </v-dialog> 
 
-  <!-- Property Form -->
 
   <v-dialog
       v-model="propertyForm"
@@ -720,7 +692,8 @@
         </v-layout> 
       </div> -->
     </v-navigation-drawer>
-    <!--  -->
+    
+
     <v-navigation-drawer
       app
       right
@@ -773,54 +746,7 @@
             ></v-autocomplete>
     
           </v-layout>
-       <!-- <v-divider class="my-2"></v-divider> -->
-    
-       <!-- <v-layout row wrap class="ma-0 pa-2">
-          <v-flex xs12>
-            <h1>Summary Maps</h1>
-          </v-flex>
-          <v-radio-group v-model="select.type" @change="filterStatus">
-            <v-radio color="blue" label="All" value="all"></v-radio>
-            <v-radio
-              color="green"
-              label="Area"
-              value="Apartment"
-            ></v-radio>
-            <v-radio
-              color="green"
-              label="Owners"
-              value="Residential"
-            ></v-radio>
-            
-          
-          </v-radio-group>
-        </v-layout> -->
-
-        <!-- <v-divider class="my-2"></v-divider> -->
-
-        <!-- <v-layout row wrap class="ma-0 pa-2">
-          <v-flex xs12>
-            <h1>Status</h1>
-          </v-flex>
-          <v-radio-group v-model="select.status" @change="filterStatus">
-            <v-radio color="blue" label="All" value="all"></v-radio>
-            <v-radio color="green" label="Purchased" value="sold"></v-radio>
-            <v-radio color="red" label="Unpurchased" value="select.blockunsold"></v-radio>
-          </v-radio-group>
-        </v-layout> -->
-
-        <!-- <v-divider class="my-2"></v-divider>
-
-        <v-layout row wrap class="ma-0 pa-2">
-          <v-flex xs12>
-            <h1>Moza</h1>
-          </v-flex>
-          <v-radio-group v-model="select.block" @change="filterStatus">
-            <v-radio color="blue" label="All" value="all"></v-radio>
-            <v-radio color="green" label="Sheikhpur" value="Sheikhpur"></v-radio>
-            <v-radio color="green" label="Kak" value="Kak"></v-radio>
-             </v-radio-group>
-        </v-layout> -->
+      
 
         <v-divider class="my-2"></v-divider>
 
@@ -1091,7 +1017,6 @@ export default {
 112792,
 840226,
 ],
-      // To link utility switch with utilities layer
       switchstatus:true,
     };
   },
@@ -1194,7 +1119,6 @@ export default {
     fetchTowerInfo() {
       this.$store.commit("setPlotInfoSkeleton", true);
       this.$store.dispatch("fetchTowerInfo", {
-        // v-for="Tower in map.Tower.features"
         url: this.api.url,
         id: this.towerID
       });
@@ -1203,12 +1127,10 @@ export default {
     },
 
     fetchDealInfo() {
-      // this.$store.commit("setPlotInfoSkeleton", true);
       this.$store.dispatch("fetchDealInfo", {
         url: this.api.url,
         id: this.dealID
       });
-      // this.$store.commit("setInfoDialog", !this.getInfoDialog);
     },
 
 
@@ -1227,7 +1149,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch("fetchSummary", { url: this.api.url });
-    
+   
   }
 };
 </script>

@@ -9,7 +9,7 @@ export default new Vuex.Store({
   state: {
     loading: false,
     darkTheme: true,
-    leftDrawer: true,
+    leftDrawer: false,
     rightDrawer: true,
     infoDialog: false,
     snackbar: false,

@@ -78,7 +78,6 @@
       :geojson="Boundary" 
       :options-style="Boundarystyle('utility', Boundary)"
       :weight="1"
-      
     ></l-geo-json>
 
     <l-geo-json
@@ -203,11 +202,14 @@ export default {
       "getSelectedPlot",
       "getSelectedDeal",
       "getInfoDialog",
-      "getLayerVisibility"
+      "getLayerVisibility",
+      "getLeftDrawer",
     ])
   },
   methods: {
     
+     toggleLeftDrawer() {
+      this.$store.commit("setLeftDrawer", !this.getLeftDrawer);},
 
     toggleLayers(){
       this.$store.commit("setLayerVisibility", !this.getLayerVisibility);
@@ -406,9 +408,12 @@ export default {
         url: Tower,
         id: Tower.properties.siteID
       });
+      this.toggleLeftDrawer();
       this.$store.commit("setPlotInfoSkeleton", true);
       this.$store.commit("setInfoDialog", !this.getInfoDialog);
     }
+
+    
   },
   
 

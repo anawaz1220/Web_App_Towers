@@ -25,23 +25,20 @@
 
       <v-toolbar-title class="hidden-md-and-down">
          <img
-          height="60px"
-          width="130px"
-          src= "engro-logo.jpg" 
-          alt="Engro"
-          title="Engro"
+          height="50px"
+          width="120px"
+          src= "GIS Plus logo 2.png" 
+          alt="GIS Plus"
+          title="GIS Plus"
           />
-
-
-
-        <snap style= "font-size: 22px; color:#098217; margin-left: 300px; vertical-align:50%;"> Digital Dashboard for Tower Business </snap>
       </v-toolbar-title>
 
-
+      
+<snap style= "font-size: 22px; color:#098217; margin-left: 300px; vertical-align:50%;"> Web GIS Portal </snap>
 
       <v-spacer></v-spacer>
      
-      <v-spacer></v-spacer>
+   
       
       
 
@@ -116,8 +113,8 @@
     >
       <v-layout row wrap class="ma-0 pa-2">
 
-        <h3 class="ma-0 py-3 px-8" style= "font-size: 22px; color:#098217; margin-right: 500px; vertical-align:50%;"
-        >Towers Summary</h3>
+        <h3 class="ma-0 py-3 px-5" style= "font-size: 22px; color:#098217; margin-right: 500px; vertical-align:50%;"
+        >Tower Summary</h3>
         
           <v-avatar tile height="200px" width="240px" class="ma-1 pa-8">
             <img
@@ -724,6 +721,7 @@
               overflow
               dense
               outlined
+              @change="ZoomTo"
           ></v-autocomplete>
             <v-autocomplete class="my-2"
               :items="regions"
